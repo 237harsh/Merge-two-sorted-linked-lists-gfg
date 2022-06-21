@@ -1,0 +1,102 @@
+method --1;creating a dummy node and each time createa new node in link list
+
+
+Node* sortedMerge(Node* a, Node* b)  
+{  
+
+//create a dummy node 
+//take two pointer curr1and curr2 pointing to head1 and head 2;
+//
+    Node *curr1=a;
+     Node *curr2=b;
+     Node *d=new Node(-1);
+    Node *t=d;
+    while(curr1||curr2)
+    {
+        if(curr1&&curr2)
+        {
+            if(curr1->data<curr2->data)
+            {
+               Node *n=new Node(curr1->data);  
+              t->next=n;
+              t=t->next;
+              curr1=curr1->next;
+            }
+            else
+            {
+               Node *n=new Node(curr2->data);  
+              t->next=n;
+              t=t->next;
+              curr2=curr2->next;  
+            }
+            
+        }
+        
+        if(curr1!=NULL&&curr2==NULL)
+        {
+           Node *n=new Node(curr1->data);  
+              t->next=n;
+              t=t->next;
+              curr1=curr1->next;  
+        }
+        if(curr1==NULL&&curr2!=NULL)
+        {
+              Node *n=new Node(curr2->data);  
+              t->next=n;
+              t=t->next;
+              curr2=curr2->next;
+        }
+    }
+    return d->next;
+    
+    
+    
+    
+    
+    method 2---using pointer only
+    
+    
+    Node* sortedMerge(Node* a, Node* b)  
+{  
+    Node *curr1=a;
+     Node *curr2=b;
+     Node *d=new Node(-1);
+    Node *t=d;
+    while(curr1||curr2)
+    {
+        if(curr1&&curr2)
+        {
+            if(curr1->data<curr2->data)
+            {
+               t->next=curr1;
+               t=t->next;
+               curr1=curr1->next;
+            }
+            else
+            {
+                 
+              t->next=curr2;
+              t=t->next;
+              curr2=curr2->next;  
+            }
+            
+        }
+        
+        if(curr1!=NULL&&curr2==NULL)
+        {
+             
+              t->next=curr1;
+              t=t->next;
+              curr1=curr1->next;  
+        }
+        if(curr1==NULL&&curr2!=NULL)
+        {
+                
+              t->next=curr2;
+              t=t->next;
+              curr2=curr2->next;
+        }
+    }
+    return d->next;
+    
+    
